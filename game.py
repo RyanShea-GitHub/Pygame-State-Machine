@@ -9,6 +9,8 @@ from game_states.game_level import Game_Level
 class Game():
         def __init__(self):
             pygame.init()
+
+            self.pygame.title("Test State Machine")
             
             self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT = 500, 300
             self.SCREEN_WIDTH, self.SCREEN_HEIGHT = 1000, 600
