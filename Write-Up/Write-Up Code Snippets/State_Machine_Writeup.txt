@@ -1,0 +1,62 @@
+WHAT IS A STATE MACHINE?
+---
+ A state machine is used to keep track of a finite number of states and automate the transition between them. 
+ There are a limited number of known states that are given, and only one can be active at any given time. 
+ This will allow us to have a given state active, and based on the given parameters/checks of our program (Game in this case) 
+ we can transition to another state seamlessly. This also lets us organize our states in a "stack" to keep track of our current 
+ state as well as those that came before it. We do this by "pushing" and "pop-ing" different classes/functions based on the input of the player. 
+
+
+HOW TO BUILD?
+---
+- Organization is critical when implementing a state machine. This is needed to better plan the different states
+that will be used and better decide how to trigger the movement from state to state, and ensure that all of the necessary states are linked to each other.
+	- Plan out the flow of the game and the different layers of menu/levels that will be used by the player
+	- Create different files for each game state that you will be creating
+	- Create one game.py/main.py file that will house the main functionality of the state machine
+
+
+IMPLEMENTATION IN PYGAME?
+---
+To better learn and understand state machines, the example that I will use is a menu system and state manager for Pygame. 
+This is a good use case, as there are plenty of states that a player will move through as they progress in a game. 
+Starting from the splash screen that welcomes the user, transitioning to the main menu, game loop, and a game-over/high-score screen. 
+This is also a good place to start, as any future pygame projects will likely use a state machine, and could be tweaked to the specific needs of that game.
+
+PLANNING: WHAT DO WE NEED TO BUILD
+---
+- Main class that will house the main game loop
+- game class to handle player input/time/updating the screen/Drawing the menu to the screen/load assets
+- 
+
+
+- Visual Representation of states
+	- This is used to help visualize how the states connect and how they will branch to and from each other. 
+- create all .py files for game states
+- Game class 
+	- Import pygame/os/time
+	- initialize the game class
+		- initialize the python module
+			- this class will be called in the main.py file so we need to tell python to initialize the pygame module on startup
+		- create game window/surface
+			- Set the width/height for both the app window as well as the pygame surface that I will draw to
+			- Looking to have this be adjusted by the user in the settings menu
+		- Set up player input actions dictionary for input states
+			- Initial state: False - This will store the state of user input where the key is the action being performed and 
+            the value is the state of the key press events. When the key is pressed down the state will set to true and when 
+            the key is released the state will return to false.
+		- Set variables for time and previous time
+			- This delta time variable will help us control both the framerate as well as the player gravity.
+		- create a list to store the state stack
+			- This is where we will keep track of the current state that we are in. We will use the push and pop classes to add 
+            states to the stack as they are called and use the pop feature the remove the state off the top when the user goes back.
+		- load assets folder
+			- This is where the game/menu assets will be stored. Any images for the menu as well as the font.
+
+c:\Users\Ryan\Desktop\Programming Related\Python\Pygame Boiler Plate\Write-Up\Write-Up Code Snippets\game_class_setup.png
+
+First before anything else we need to import the pygame module as well a the os module to help us import assets as well as 
+read/write to and from files. Time is going to be used to help with framerate as well as timed events within the menu/game. 
+where we first initialize the python module. There are two variables set to differentiate between the application itself 
+being open and the player making it past the menu and actually playing the game. This is also the class where the window 
+width and height as well as the display surface are set. 

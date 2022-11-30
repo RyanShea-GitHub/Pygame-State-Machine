@@ -4,6 +4,7 @@ from pygame import *
 import time
 
 from game_states.splash_screen import Splash
+from game_states.game_level import Game_Level
 
 class Game():
         def __init__(self):
@@ -16,7 +17,7 @@ class Game():
             self.running, self.playing = True, True
 
             self.user_Actions = {"left": False, "Right": False, "Up": False, "Down": False,
-            "Slide": False, "Jump": False, "Pause": False, "Roll": False}
+            "Slide": False, "Jump": False, "Pause": False, "Roll": False, "Start": False}
 
             self.delta_Time, self.prev_Time = 0, 0
 
@@ -55,6 +56,8 @@ class Game():
                         self.user_Actions["Roll"] = True
                     if event.key == pygame.K_SPACE:
                         self.user_Actions["Jump"] = True
+                    if event.key == pygame.K_RETURN:
+                        self.user_Actions["Start"] = True
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_w:
                         self.user_Actions["Up"] = False
@@ -72,6 +75,8 @@ class Game():
                         self.user_Actions["Roll"] = False
                     if event.key == pygame.K_SPACE:
                         self.user_Actions["Jump"] = False
+                    if event.key == pygame.K_RETURN:
+                        self.user_Actions["Start"] = False
             
                     
         def render(self):
@@ -89,6 +94,7 @@ class Game():
 
         def load_assets(self):
             self.assets_Pointer =  os.path.join("assets")
+            self.level_Pointer = os.path.join(self.assets_Pointer, "level_assets")
             self.sprite_Pointer = os.path.join(self.assets_Pointer, "sprites")
             self.font_Pointer = os.path.join(self.assets_Pointer, "font")
             self.font = pygame.font.Font(os.path.join(self.font_Pointer, "Galaxy_dingbats.ttf"), 30)
